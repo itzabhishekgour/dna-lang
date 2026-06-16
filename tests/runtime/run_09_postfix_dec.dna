@@ -1,0 +1,10 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 10
+// 9
+action void main() {
+    int x = 10
+    print(x--)
+    print(x)
+}
