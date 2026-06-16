@@ -1,0 +1,29 @@
+// Control flow IR test: if/else, while, for
+action void main()
+{
+    int age = 20
+
+    // if / else
+    if(age >= 18)
+    {
+        print("Adult")
+    }
+    else
+    {
+        print("Minor")
+    }
+
+    // while loop
+    int counter = 0
+    while(counter < 5)
+    {
+        print(counter)
+        counter = counter + 1
+    }
+
+    // for loop
+    for(int i = 0; i < 3; i++)
+    {
+        print(i)
+    }
+}
