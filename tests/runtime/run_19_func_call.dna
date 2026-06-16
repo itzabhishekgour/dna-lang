@@ -1,0 +1,10 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 30
+action int add(int a, int b) {
+    return a + b
+}
+action void main() {
+    print(add(10, 20))
+}
