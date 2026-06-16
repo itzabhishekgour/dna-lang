@@ -448,6 +448,10 @@ int main(int argc, char* argv[]) {
 
                 if (linkerPath.empty() || msvcLibPath.empty() || winSdkUmPath.empty() || winSdkUcrtPath.empty()) {
                     std::cerr << "Error: Could not locate MSVC build tools or Windows SDK for linking.\n";
+                    std::cerr << "  linkerPath: " << (linkerPath.empty() ? "MISSING" : linkerPath) << "\n";
+                    std::cerr << "  msvcLibPath: " << (msvcLibPath.empty() ? "MISSING" : msvcLibPath) << "\n";
+                    std::cerr << "  winSdkUmPath: " << (winSdkUmPath.empty() ? "MISSING" : winSdkUmPath) << "\n";
+                    std::cerr << "  winSdkUcrtPath: " << (winSdkUcrtPath.empty() ? "MISSING" : winSdkUcrtPath) << "\n";
                     return 1;
                 }
 
