@@ -1,0 +1,7 @@
+// FLAGS: --check
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Condition must be of type bool
+action void main() {
+    for (int i = 0; i; i++) {}
+}
