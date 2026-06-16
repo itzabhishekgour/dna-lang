@@ -1,0 +1,10 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// Assign
+// Identifier(y)
+// Literal(20)
+action void main() {
+    int y
+    y = 20
+}
