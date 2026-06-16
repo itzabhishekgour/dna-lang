@@ -1,0 +1,8 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 17
+action void main() {
+    int x = 2 + 3 * 4 + 6 / 2
+    print(x)
+}
