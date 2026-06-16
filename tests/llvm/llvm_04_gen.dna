@@ -1,0 +1,8 @@
+// FLAGS: --llvm
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// define i32 @main()
+action void main() {
+    int dummy = 4
+    print(dummy)
+}
