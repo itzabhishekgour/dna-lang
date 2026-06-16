@@ -1,0 +1,8 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// Hello, World!
+action void main() {
+    String msg = "Hello, World!"
+    print(msg)
+}
