@@ -1,0 +1,13 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 1
+action void main() {
+    int a = 10
+    int b = 20
+    if (a < b && b == 20 && a != b) {
+        print(1)
+    } else {
+        print(0)
+    }
+}
