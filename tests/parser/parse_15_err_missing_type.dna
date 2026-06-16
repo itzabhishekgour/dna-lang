@@ -1,0 +1,5 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Expected function name
+action main() { }
