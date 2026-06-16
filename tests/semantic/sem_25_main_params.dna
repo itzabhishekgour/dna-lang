@@ -1,0 +1,5 @@
+// FLAGS: --check
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Entrypoint function 'main' must not accept parameters
+action void main(int a) {}
