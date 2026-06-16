@@ -1,0 +1,5 @@
+// FLAGS: --tokens
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Unexpected character
+int @
