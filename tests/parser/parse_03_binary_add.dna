@@ -1,0 +1,7 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// BinaryExpr(+)
+action void main() {
+    int z = 1 + 2
+}
