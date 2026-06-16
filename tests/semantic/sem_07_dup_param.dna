@@ -1,0 +1,6 @@
+// FLAGS: --check
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Duplicate parameter
+action void foo(int a, int a) {
+}
