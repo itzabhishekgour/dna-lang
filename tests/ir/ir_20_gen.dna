@@ -1,0 +1,8 @@
+// FLAGS: --ir
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// FUNC main
+action void main() {
+    int dummy = 20
+    print(dummy)
+}
