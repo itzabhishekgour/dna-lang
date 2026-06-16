@@ -1,0 +1,8 @@
+// FLAGS: --check
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Duplicate field declaration
+class Student {
+    public int age
+    public int age
+}
