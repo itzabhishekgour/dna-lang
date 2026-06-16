@@ -1,0 +1,13 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 8
+action int fib(int n) {
+    if (n <= 1) {
+        return n
+    }
+    return fib(n - 1) + fib(n - 2)
+}
+action void main() {
+    print(fib(6))
+}
