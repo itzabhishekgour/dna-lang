@@ -1,0 +1,100 @@
+// DNA v0.1 — Complete language feature test
+// Exercises every major construct in the specification.
+
+load io
+load math
+
+// ── A simple class ────────────────────────────────────────────────────────────
+class Student
+{
+    public String name
+    public int age
+
+    construct(String n, int a)
+    {
+        name = n
+        age = a
+    }
+
+    public action void greet()
+    {
+        print("Hello, I am ")
+        print(name)
+    }
+
+    public action int getAge()
+    {
+        return age
+    }
+}
+
+// ── A standalone utility function ─────────────────────────────────────────────
+action int add(int a, int b)
+{
+    return a + b
+}
+
+action bool isAdult(int age)
+{
+    return age >= 18
+}
+
+// ── Main entry point ──────────────────────────────────────────────────────────
+action void main()
+{
+    // Variable declarations
+    int age = 20
+    float pi = 3.14
+    double precision = 2.718281828
+    bool active = true
+    char grade = 'A'
+
+    // Input / output
+    String name = input("Enter your name: ")
+    print(name)
+
+    // Arithmetic
+    int result = add(10, 5)
+    print(result)
+
+    // Conditionals
+    if(age >= 18)
+    {
+        print("Adult")
+    }
+    else
+    {
+        print("Minor")
+    }
+
+    // While loop
+    int counter = 0
+    while(counter < 5)
+    {
+        print(counter)
+        counter = counter + 1
+    }
+
+    // For loop
+    for(int i = 0; i < 10; i++)
+    {
+        print(i)
+    }
+
+    // Object creation
+    Student s = Student("Alice", 21)
+    s.greet()
+
+    int studentAge = s.getAge()
+    print(studentAge)
+
+    // Logical operators
+    bool check = active && isAdult(age)
+    bool another = !active || age > 15
+
+    // Nested if
+    if(check)
+    {
+        print("All good")
+    }
+}
