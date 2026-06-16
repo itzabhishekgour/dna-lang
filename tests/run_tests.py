@@ -106,7 +106,7 @@ def run_test(file_path):
     
     # 1. Verify compiler exit code
     if proc.returncode != metadata["compiler_exit_code"]:
-        return False, "EXIT_CODE_MISMATCH", f"Expected compiler exit code {metadata['compiler_exit_code']}, got {proc.returncode}.\nStderr: {proc.stderr}"
+        return False, "EXIT_CODE_MISMATCH", f"Expected compiler exit code {metadata['compiler_exit_code']}, got {proc.returncode}.\nStdout: {proc.stdout}\nStderr: {proc.stderr}"
     
     # 2. Verify compiler error message if expected
     if metadata["compiler_error"]:

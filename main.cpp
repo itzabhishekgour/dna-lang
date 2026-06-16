@@ -437,9 +437,13 @@ int main(int argc, char* argv[]) {
                         if (entry.is_directory()) {
                             std::string version = entry.path().filename().string();
                             if (version.rfind("10.", 0) == 0) {
-                                winSdkUmPath = (entry.path() / "um" / "x64").string();
-                                winSdkUcrtPath = (entry.path() / "ucrt" / "x64").string();
-                                break;
+                                auto um = entry.path() / "um" / "x64";
+                                auto ucrt = entry.path() / "ucrt" / "x64";
+                                if (fs::exists(um) && fs::exists(ucrt)) {
+                                    winSdkUmPath = um.string();
+                                    winSdkUcrtPath = ucrt.string();
+                                    break;
+                                }
                             }
                         }
                     }
@@ -483,6 +487,12 @@ int main(int argc, char* argv[]) {
 
                 if (linkRes != 0) {
                     std::cerr << "Error: Linking failed with exit code " << linkRes << ".\n";
+                    std::cerr << "  linkerPath: " << linkerPath << "\n";
+                    std::cerr << "  msvcLibPath: " << msvcLibPath << "\n";
+                    std::cerr << "  winSdkUmPath: " << winSdkUmPath << "\n";
+                    std::cerr << "  winSdkUcrtPath: " << winSdkUcrtPath << "\n";
+                    std::cerr << "  runtimeLib: " << runtimeLib.string() << "\n";
+                    std::cerr << "  exists(runtimeLib): " << (std::filesystem::exists(runtimeLib) ? "YES" : "NO") << "\n";
                     return linkRes;
                 }
                 std::cout << "Successfully generated " << exeFile << "\n";
