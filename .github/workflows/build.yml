@@ -19,12 +19,12 @@ jobs:
 
     - name: Download LLVM SDK
       run: |
-        curl -LO https://github.com/vovkos/llvm-package-windows/releases/download/v18.1.8/llvm-18.1.8-windows-amd64-msvc17-msvcrt.zip
+        curl -LO https://github.com/vovkos/llvm-package-windows/releases/download/llvm-18.1.8/llvm-18.1.8-windows-amd64-msvc17-msvcrt.7z
       shell: cmd
 
     - name: Extract LLVM SDK
       run: |
-        powershell -Command "Expand-Archive -Path llvm-18.1.8-windows-amd64-msvc17-msvcrt.zip -DestinationPath llvm-sdk"
+        7z x llvm-18.1.8-windows-amd64-msvc17-msvcrt.7z -ollvm-sdk
       shell: cmd
 
     - name: Configure CMake
