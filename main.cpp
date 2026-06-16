@@ -393,32 +393,57 @@ int main(int argc, char* argv[]) {
                 std::string winSdkUcrtPath = "";
                 std::string linkerPath = "";
 
-                std::string msvcRoot = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC";
-                if (fs::exists(msvcRoot)) {
-                    for (const auto& entry : fs::directory_iterator(msvcRoot)) {
-                        if (entry.is_directory()) {
-                            msvcLibPath = entry.path().string() + "\\lib\\x64";
-                            std::string linkExe = entry.path().string() + "\\bin\\Hostx64\\x64\\link.exe";
-                            if (fs::exists(linkExe)) {
-                                linkerPath = linkExe;
-                                break;
+                // Search roots for Visual Studio installations
+                std::string vsRoots[] = {
+                    "C:\\Program Files\\Microsoft Visual Studio",
+                    "C:\\Program Files (x86)\\Microsoft Visual Studio"
+                };
+
+                for (const auto& vsRoot : vsRoots) {
+                    if (!fs::exists(vsRoot)) continue;
+                    for (const auto& versionEntry : fs::directory_iterator(vsRoot)) {
+                        if (!versionEntry.is_directory()) continue;
+                        for (const auto& editionEntry : fs::directory_iterator(versionEntry.path())) {
+                            if (!editionEntry.is_directory()) continue;
+                            std::filesystem::path msvcRoot = editionEntry.path() / "VC" / "Tools" / "MSVC";
+                            if (fs::exists(msvcRoot)) {
+                                for (const auto& entry : fs::directory_iterator(msvcRoot)) {
+                                    if (entry.is_directory()) {
+                                        std::string linkExe = (entry.path() / "bin" / "Hostx64" / "x64" / "link.exe").string();
+                                        if (fs::exists(linkExe)) {
+                                            linkerPath = linkExe;
+                                            msvcLibPath = (entry.path() / "lib" / "x64").string();
+                                            break;
+                                        }
+                                    }
+                                }
                             }
+                            if (!linkerPath.empty()) break;
                         }
+                        if (!linkerPath.empty()) break;
                     }
+                    if (!linkerPath.empty()) break;
                 }
 
-                std::string winKitsRoot = "C:\\Program Files (x86)\\Windows Kits\\10\\Lib";
-                if (fs::exists(winKitsRoot)) {
+                // Search roots for Windows Kits
+                std::string winKitsRoots[] = {
+                    "C:\\Program Files (x86)\\Windows Kits\\10\\Lib",
+                    "C:\\Program Files\\Windows Kits\\10\\Lib"
+                };
+
+                for (const auto& winKitsRoot : winKitsRoots) {
+                    if (!fs::exists(winKitsRoot)) continue;
                     for (const auto& entry : fs::directory_iterator(winKitsRoot)) {
                         if (entry.is_directory()) {
                             std::string version = entry.path().filename().string();
                             if (version.rfind("10.", 0) == 0) {
-                                winSdkUmPath = entry.path().string() + "\\um\\x64";
-                                winSdkUcrtPath = entry.path().string() + "\\ucrt\\x64";
+                                winSdkUmPath = (entry.path() / "um" / "x64").string();
+                                winSdkUcrtPath = (entry.path() / "ucrt" / "x64").string();
                                 break;
                             }
                         }
                     }
+                    if (!winSdkUmPath.empty()) break;
                 }
 
                 if (linkerPath.empty() || msvcLibPath.empty() || winSdkUmPath.empty() || winSdkUcrtPath.empty()) {
