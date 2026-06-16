@@ -1,0 +1,10 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// While
+// Condition
+action void main() {
+    while (true) {
+        print(1)
+    }
+}
