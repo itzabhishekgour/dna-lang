@@ -1,0 +1,10 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// If
+// Condition
+action void main() {
+    if (true) {
+        print(1)
+    }
+}
