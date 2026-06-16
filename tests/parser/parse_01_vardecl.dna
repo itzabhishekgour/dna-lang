@@ -1,0 +1,7 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// VarDecl(int x =
+action void main() {
+    int x = 10
+}
