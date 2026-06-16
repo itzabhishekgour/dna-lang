@@ -1,0 +1,11 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// Action(int add(int a, int b))
+// Action(void main())
+action int add(int a, int b) {
+    return a + b
+}
+action void main() {
+    int r = add(1, 2)
+}
