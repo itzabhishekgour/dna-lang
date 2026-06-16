@@ -1,0 +1,6 @@
+// FLAGS: --check
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Duplicate action declaration
+action void foo() {}
+action int foo() { return 0; }
