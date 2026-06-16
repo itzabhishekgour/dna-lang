@@ -1,0 +1,14 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 11
+// 12
+// 21
+// 22
+action void main() {
+    for (int i = 1; i <= 2; i++) {
+        for (int j = 1; j <= 2; j++) {
+            print(i * 10 + j)
+        }
+    }
+}
