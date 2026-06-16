@@ -1,0 +1,7 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// Hello, DNA!
+action void main() {
+    print("Hello, DNA!")
+}
