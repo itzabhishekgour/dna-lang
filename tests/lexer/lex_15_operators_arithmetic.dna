@@ -1,0 +1,9 @@
+// FLAGS: --tokens
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// PLUS
+// MINUS
+// STAR
+// SLASH
+// MOD
++ - * / %
