@@ -1,0 +1,7 @@
+// FLAGS: --check
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Return type mismatch
+action void main() {
+    return 10
+}
