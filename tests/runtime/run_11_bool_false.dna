@@ -1,0 +1,12 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 0
+action void main() {
+    bool b = false
+    if (b) {
+        print(1)
+    } else {
+        print(0)
+    }
+}
