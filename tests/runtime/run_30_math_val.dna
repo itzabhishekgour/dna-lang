@@ -1,0 +1,10 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 300
+action int scale(int x) {
+    return x * 10
+}
+action void main() {
+    print(scale(30))
+}
