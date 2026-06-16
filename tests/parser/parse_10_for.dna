@@ -1,0 +1,12 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_COMPILER_STDOUT:
+// For
+// Init
+// Condition
+// Update
+action void main() {
+    for (int i = 0; i < 10; i++) {
+        print(i)
+    }
+}
