@@ -1,0 +1,33 @@
+name: Build Ribosome Compiler
+
+on:
+  push:
+    branches: [ alpha, main ]
+  pull_request:
+    branches: [ alpha, main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Install LLVM
+      run: |
+        choco install llvm -y --no-progress
+      shell: bash
+
+    - name: Configure CMake
+      run: |
+        cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DLLVM_DIR="C:/Program Files/LLVM/lib/cmake/llvm"
+      shell: cmd
+
+    - name: Build ribosome
+      run: |
+        msbuild build/ribosome.sln /p:Configuration=Release
+      shell: cmd
