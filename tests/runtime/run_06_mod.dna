@@ -1,0 +1,8 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 1
+action void main() {
+    int x = 10 % 3
+    print(x)
+}
