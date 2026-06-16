@@ -1,0 +1,6 @@
+// Type error test — int age = "Hello" should produce a semantic error
+action void main()
+{
+    int age = "Hello"
+    print(age)
+}
