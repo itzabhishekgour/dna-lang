@@ -1,0 +1,6 @@
+// Example 1 from DNA IR spec: simple main with variable + print
+action void main()
+{
+    int age = 20
+    print(age)
+}
