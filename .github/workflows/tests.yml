@@ -22,14 +22,19 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install LLVM
+    - name: Download LLVM SDK
       run: |
-        choco install llvm -y --no-progress
-      shell: bash
+        curl -LO https://github.com/vovkos/llvm-package-windows/releases/download/v18.1.8/llvm-18.1.8-windows-amd64-msvc17-msvcrt.zip
+      shell: cmd
+
+    - name: Extract LLVM SDK
+      run: |
+        powershell -Command "Expand-Archive -Path llvm-18.1.8-windows-amd64-msvc17-msvcrt.zip -DestinationPath llvm-sdk"
+      shell: cmd
 
     - name: Configure CMake
       run: |
-        cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DLLVM_DIR="C:/Program Files/LLVM/lib/cmake/llvm"
+        cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DLLVM_DIR="llvm-sdk/llvm-18.1.8-windows-amd64-msvc17-msvcrt/lib/cmake/llvm"
       shell: cmd
 
     - name: Build compiler & runtime library
