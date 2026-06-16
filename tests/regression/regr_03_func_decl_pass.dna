@@ -1,0 +1,8 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 2
+action int foo() { return 2; }
+action void main() {
+    print(foo())
+}
