@@ -39,7 +39,7 @@ jobs:
 
     - name: Build compiler & runtime library
       run: |
-        msbuild build/ribosome.sln /p:Configuration=Release
+        cmake --build build --config Release
       shell: cmd
 
     - name: Run Test Suite
