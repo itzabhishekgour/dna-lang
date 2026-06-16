@@ -42,6 +42,11 @@ jobs:
         cmake --build build --config Release
       shell: cmd
 
+    - name: Add LLVM DLLs to Path
+      run: |
+        echo %CD%\llvm-sdk\llvm-18.1.8-windows-amd64-msvc17-msvcrt\bin>> %GITHUB_PATH%
+      shell: cmd
+
     - name: Run Test Suite
       run: |
         python tests/run_tests.py
