@@ -1,0 +1,11 @@
+// Example 2 from DNA IR spec: function with parameters and return
+action int add(int a, int b)
+{
+    return a + b
+}
+
+action void main()
+{
+    int result = add(10, 20)
+    print(result)
+}
