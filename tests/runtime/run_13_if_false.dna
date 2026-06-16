@@ -1,0 +1,11 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 100
+action void main() {
+    if (5 > 10) {
+        print(99)
+    } else {
+        print(100)
+    }
+}
