@@ -1,0 +1,16 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 0
+// 2
+action void main() {
+    int i = 0
+    while (i < 3) {
+        if (i == 1) {
+            i = i + 1
+            continue
+        }
+        print(i)
+        i = i + 1
+    }
+}
