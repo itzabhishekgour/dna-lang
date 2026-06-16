@@ -1,0 +1,5 @@
+// FLAGS: --ast
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Unexpected token in expression: ')'
+action void main() { int x = () }
