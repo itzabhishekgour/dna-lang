@@ -1,0 +1,48 @@
+name: Run Validation Tests
+
+on:
+  push:
+    branches: [ alpha, main ]
+  pull_request:
+    branches: [ alpha, main ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install LLVM
+      run: |
+        choco install llvm -y --no-progress
+      shell: bash
+
+    - name: Configure CMake
+      run: |
+        cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DLLVM_DIR="C:/Program Files/LLVM/lib/cmake/llvm"
+      shell: cmd
+
+    - name: Build compiler & runtime library
+      run: |
+        msbuild build/ribosome.sln /p:Configuration=Release
+      shell: cmd
+
+    - name: Run Test Suite
+      run: |
+        python tests/run_tests.py
+      shell: cmd
+
+    - name: Run Fuzzer Quick Check
+      run: |
+        python tests/fuzz_test.py --quick
+      shell: cmd
