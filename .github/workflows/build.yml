@@ -34,5 +34,5 @@ jobs:
 
     - name: Build ribosome
       run: |
-        msbuild build/ribosome.sln /p:Configuration=Release
+        cmake --build build --config Release
       shell: cmd
