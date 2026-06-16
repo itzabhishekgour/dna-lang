@@ -34,6 +34,13 @@ add_executable(ribosome ${RIBOSOME_SOURCES})
 # ── Runtime Library ────────────────────────────────────────────────────────────
 add_library(dnaruntime STATIC runtime/DNAString.cpp)
 
+# Place dnaruntime.lib next to ribosome.exe so the compiler can find it at link time
+set_target_properties(dnaruntime PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY         "${CMAKE_BINARY_DIR}/$<CONFIG>"
+    ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Release"
+    ARCHIVE_OUTPUT_DIRECTORY_DEBUG   "${CMAKE_BINARY_DIR}/Debug"
+)
+
 target_include_directories(ribosome PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${LLVM_INCLUDE_DIRS}
