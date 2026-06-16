@@ -1,0 +1,12 @@
+// FLAGS: --ir
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Type Error: Expected int but got bool
+action void main() {
+    /* This is tested by generating invalid IR in semantic or backend check.
+       Since DNA IR is generated dynamically, we can check a backend fail condition.
+       Wait, the semantic checker might reject it, but if it gets to IR, LLVMCodeGen will validate it.
+       Let's create an invalid condition that causes compile to fail.
+       Actually, any semantic/compiler error works. Let's make a type mismatch. */
+    int a = true
+}
