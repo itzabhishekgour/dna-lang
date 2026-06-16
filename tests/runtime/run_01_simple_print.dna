@@ -1,0 +1,8 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 0
+// EXPECT_EXECUTION_STDOUT:
+// 20
+action void main() {
+    int age = 20
+    print(age)
+}
