@@ -1,0 +1,7 @@
+// FLAGS: --build
+// EXPECT_COMPILER_EXIT_CODE: 1
+// EXPECT_COMPILER_ERROR:
+// Type not supported in LLVM Backend Phase 1
+action void main() {
+    float x = 3.14
+}
